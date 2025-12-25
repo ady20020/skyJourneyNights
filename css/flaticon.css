@@ -40,7 +40,10 @@
 .flaticon-king-size:before { content: "\f101"; }
 .flaticon-shower:before { content: "\f102"; }
 .flaticon-paragliding:before { content: "\f103"; }
-.flaticon-tour-guide:before { content: "\f104"; }
+.flaticon-tour-guide:before { content: "🌏"; }
 .flaticon-route:before { content: "\f105"; }
 .flaticon-map:before { content: "\f106"; }
 .flaticon-mountains:before { content: "\f107"; }
+.flaticon-flower:before { content: "🌸"; }
+.flaticon-safari:before { content: "🏜️"; }
+.flaticon-burj-khalifa:before { content: "🏙️"; }
