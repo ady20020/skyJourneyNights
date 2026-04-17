@@ -256,8 +256,71 @@
     mainClass: 'mfp-fade',
     removalDelay: 160,
     preloader: false,
-
-    fixedContentPos: false
+    fixedContentPos: false,
+    callbacks: {
+      open: function() {
+        // Unmute Vimeo video after popup opens and video loads
+        if($(this.currItem.el).hasClass('popup-vimeo')) {
+          var attemptUnmute = function() {
+            var iframe = $('.mfp-iframe')[0];
+            if(iframe && iframe.contentWindow) {
+              try {
+                // Try to unmute using Vimeo Player API
+                iframe.contentWindow.postMessage(JSON.stringify({
+                  method: 'setVolume',
+                  value: 1
+                }), '*');
+                
+                // Also try to set muted to false
+                iframe.contentWindow.postMessage(JSON.stringify({
+                  method: 'setMuted',
+                  value: false
+                }), '*');
+              } catch(e) {
+                console.log('Vimeo API call');
+              }
+            }
+          };
+          
+          // Try multiple times as video loads
+          setTimeout(attemptUnmute, 300);
+          setTimeout(attemptUnmute, 800);
+          setTimeout(attemptUnmute, 1500);
+          
+          // Listen for Vimeo ready event
+          window.addEventListener('message', function(event) {
+            if(event.origin !== 'https://player.vimeo.com') return;
+            if(event.data && event.data.event === 'ready') {
+              attemptUnmute();
+            }
+          });
+        }
+      }
+    },
+    iframe: {
+      patterns: {
+        youtube: {
+          index: 'youtube.com/embed/',
+          id: '/',
+          src: 'https://www.youtube.com/embed/%id%?autoplay=1&rel=0&modestbranding=1'
+        },
+        youtube_watch: {
+          index: 'youtube.com/watch',
+          id: 'v=',
+          src: 'https://www.youtube.com/embed/%id%?autoplay=1&rel=0&modestbranding=1'
+        },
+        vimeo: {
+          index: 'vimeo.com/',
+          id: '/',
+          src: 'https://player.vimeo.com/video/%id%?autoplay=1&muted=0&title=0&byline=0&portrait=0&api=1'
+        },
+        vimeo_player: {
+          index: 'player.vimeo.com/video/',
+          id: '/',
+          src: 'https://player.vimeo.com/video/%id%?autoplay=1&muted=0&title=0&byline=0&portrait=0&api=1'
+        }
+      }
+    }
   });
 
 
