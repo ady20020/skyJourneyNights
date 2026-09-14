@@ -1,0 +1,33 @@
+# robots.txt for Sky Journey Nights
+# https://skyjourneynights.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+Allow: /index.html
+Allow: /about.html
+Allow: /destination.html
+Allow: /hotel.html
+Allow: /blog.html
+Allow: /blog-single.html
+Allow: /contact.html
+Allow: /visa.html
+
+# Allow access to CSS and JS files
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /fonts/
+Allow: /video/
+
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://skyjourneynights.com/sitemap.xml
+
+# Crawl-delay (optional - helps prevent server overload)
+# Crawl-delay: 1
+
