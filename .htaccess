@@ -39,10 +39,23 @@ RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 RewriteCond %{HTTP:X-Server-Addr} ^(.*)
 RewriteRule .* - [e=HTTP_X_SERVER_ADDR:%1]
 RewriteRule ^\.well-known/.+ - [L]
-#### PERSISTENT CONTENT ####
-DirectoryIndex index.php index.cgi index.html
-RewriteCond %{REQUEST_FILENAME} !-f [OR]
-RewriteCond %{REQUEST_URI} ^\/(js\/(main\.js|bootstrap\.min\.js)|css\/([0-9a-f]+\.css|common\.css|site\.css|bootstrap\.min\.css)|sitemap\.xml)$
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ sitepro/$1 [L,QSA]
+
+# SEO: one canonical host — force HTTPS and drop "www"
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://skyjourneynights.com/$1 [R=301,L]
+
+# SEO: /index.html duplicates the homepage
+RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+RewriteRule ^index\.html$ https://skyjourneynights.com/ [R=301,L]
+
+DirectoryIndex index.html index.php index.cgi
+
+# Removed the site-builder rule that rewrote sitemap.xml and every missing
+# URL into sitepro/ — it hid the real sitemap from Google and turned
+# missing pages into 403s instead of proper 404s.
+
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript application/json image/svg+xml
+</IfModule>
 
