@@ -15004,3 +15004,135 @@ textarea.form-control {
   color: #1f1f1f;
   box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.08);
 }
+/* Footer readability: soft white wash over the skyline sketch, darker text */
+.ftco-footer {
+  position: relative;
+}
+
+.ftco-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.78);
+  z-index: -1;
+}
+
+.ftco-footer p,
+.ftco-footer .ftco-footer-widget ul li a,
+.block-23 ul li .text {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.ftco-footer .ftco-footer-widget ul li a:hover,
+.ftco-footer .ftco-footer-widget ul li a:hover .text {
+  color: #f15d30 !important;
+}
+
+/* Contact cards (footer + contact page) */
+.contact-cards {
+  margin-bottom: 18px;
+}
+
+.contact-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 3px solid #f15d30;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 18px -10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.3);
+}
+
+.cc-region {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f15d30;
+  margin-bottom: 4px;
+}
+
+.ftco-footer a.cc-phone,
+a.cc-phone {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f1f1f !important;
+  line-height: 1.3;
+}
+
+.cc-name {
+  font-size: 13px;
+  color: #555;
+  margin-top: 2px;
+}
+
+.cc-langs {
+  margin-top: 8px;
+  line-height: 1;
+}
+
+.cc-langs span {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 9px;
+  margin: 0 4px 4px 0;
+  border-radius: 999px;
+  background: rgba(241, 93, 48, 0.09);
+  color: #b8441f;
+}
+
+.cc-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ftco-footer a.cc-btn,
+a.cc-btn {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 0;
+  border-radius: 6px;
+  border: 1px solid #f15d30;
+  color: #f15d30 !important;
+}
+
+.ftco-footer a.cc-btn:hover,
+a.cc-btn:hover {
+  background: #f15d30;
+  color: #fff !important;
+}
+
+.ftco-footer a.cc-btn-wa,
+a.cc-btn-wa {
+  border-color: #25d366;
+  color: #1da851 !important;
+}
+
+.ftco-footer a.cc-btn-wa:hover,
+a.cc-btn-wa:hover {
+  background: #25d366;
+  color: #fff !important;
+}
+
+.contact-box-lines {
+  text-align: left;
+}
+
+.contact-box-lines .cb-line + .cb-line {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
