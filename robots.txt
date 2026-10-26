@@ -12,6 +12,7 @@ Allow: /hotel.html
 Allow: /blog.html
 Allow: /blog-single.html
 Allow: /contact.html
+Allow: /visa.html
 
 # Allow access to CSS and JS files
 Allow: /css/
